@@ -1,20 +1,20 @@
-<div class="p-4 bg-white/5 rounded-xl flex flex-col text-center">
-    <div class="self-start">
+<x-panel class="flex flex-col text-center">
+    <div class="self-start text-gray-400">
         Empresa
     </div>
 
-    <div class="py-8 font-bold">
-        <h3>Productor de Teleseries</h3>
-        <p>Full time - Desde $1.500.000</p>
+    <div class="py-8">
+        <h3 class="group-hover:text-blue-600 transition duration-300 text-xl font-bold">Productor de Teleseries</h3>
+        <p class="text-sm mt-4">Full time - Desde $1.500.000</p>
     </div>
 
     <div class="flex justify-between items-center mt-auto">
         <div class="space-x-1.5">
-            <x-tag>Tag 1</x-tag>
-            <x-tag>Tag 2</x-tag>
-            <x-tag>Tag 3</x-tag>
+            <x-tag size="small">Backend</x-tag>
+            <x-tag size="small">Frontend</x-tag>
+            <x-tag size="small">Senior</x-tag>
+
         </div>
-        <img src="https://cdn.prod.website-files.com/static/page-not-found.211a85e40c.svg" alt=""
-            class="rounded-xl">
+        <x-employer-logo :width="42" />
     </div>
-</div>
+</x-panel>

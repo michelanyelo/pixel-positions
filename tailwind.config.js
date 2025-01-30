@@ -3,8 +3,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
+        './index.html',
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
@@ -12,10 +11,10 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                grotesk: ['"Hanken Grotesk"', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                "black": "#060606",
+                black: "#060606",
             }
         },
     },
