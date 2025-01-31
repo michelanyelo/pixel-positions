@@ -4,8 +4,8 @@
             <h1 class="font-bold text-4xl">Encontremos tu próximo trabajo!</h1>
 
             <form action="">
-                <input type="text" name="search" id="search" placeholder="Desarrollador web, Diseñador, etc." autocomplete="off"
-                    class="rounded-xl bg-white/10 border-white/10 px-5 py-4 w-full max-w-xl">
+                <input type="text" name="search" id="search" placeholder="Desarrollador web, Diseñador, etc."
+                    autocomplete="off" class="rounded-xl bg-white/10 border-white/10 px-5 py-4 w-full max-w-xl">
             </form>
         </section>
 
@@ -15,22 +15,19 @@
             </x-section-heading>
 
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
-                <x-job-card />
-                <x-job-card />
-                <x-job-card />
+                @foreach ($featuredJobs as $job)
+                    <x-job-card :$job />
+                @endforeach
             </div>
         </section>
 
         <section>
             <x-section-heading>Categorías</x-section-heading>
             <div class="mt-6">
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
+                @foreach ($tags as $tag)
+                    <x-tag :$tag />
+                @endforeach
+
             </div>
         </section>
 
@@ -39,9 +36,9 @@
                 Últimos publicados
             </x-section-heading>
             <div class="mt-6 space-y-6">
-                <x-job-card-wide />
-                <x-job-card-wide />
-                <x-job-card-wide />
+                @foreach ($jobs as $job)
+                    <x-job-card-wide :$job />
+                @endforeach
             </div>
         </section>
     </div>

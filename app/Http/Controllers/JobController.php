@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Models\Tag;
+
+use function Pest\Laravel\get;
 
 class JobController extends Controller
 {
@@ -13,7 +16,11 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        return view('jobs.index', [
+            'jobs' => Job::with('tags')->orderBy('created_at', 'desc')->get(),
+            'featuredJobs' => Job::with('tags')->where('featured', 1)->orderBy('created_at', 'desc')->get(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
