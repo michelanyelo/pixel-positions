@@ -10,7 +10,7 @@
         <x-forms.divider />
 
         <x-forms.input label="Empresa" name="employer" />
-        <x-forms.input label="Logo de la empresa" name="logo" type="file" />
+        <x-forms.input label="Logo de la empresa" name="logo" type="file" accept=".png,.jpg,.jpeg,.webp" />
 
         <x-forms.button>Crear cuenta</x-forms.button>
     </x-forms.form>
