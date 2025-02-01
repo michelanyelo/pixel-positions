@@ -2,11 +2,9 @@
     <div class="space-y-30">
         <section class="text-center space-y-8 py-10">
             <h1 class="font-bold text-4xl">Encontremos tu próximo trabajo!</h1>
-
-            <form action="">
-                <input type="text" name="search" id="search" placeholder="Desarrollador web, Diseñador, etc."
-                    autocomplete="off" class="rounded-xl bg-white/10 border-white/10 px-5 py-4 w-full max-w-xl">
-            </form>
+            <x-forms.form action="/search" class="mt-6">
+                <x-forms.input :label="false" name="query" placeholder="Desarrollador web, Diseñador, etc." />
+            </x-forms.form>
         </section>
 
         <section>
@@ -16,7 +14,7 @@
 
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
                 @foreach ($featuredJobs as $job)
-                    <x-job-card :$job />
+                    <x-job-card :$job/>
                 @endforeach
             </div>
         </section>
@@ -25,7 +23,7 @@
             <x-section-heading>Categorías</x-section-heading>
             <div class="mt-6">
                 @foreach ($tags as $tag)
-                    <x-tag :$tag />
+                    <x-tag :$tag/>
                 @endforeach
 
             </div>
@@ -37,7 +35,7 @@
             </x-section-heading>
             <div class="mt-6 space-y-6">
                 @foreach ($jobs as $job)
-                    <x-job-card-wide :$job />
+                    <x-job-card-wide :$job/>
                 @endforeach
             </div>
         </section>

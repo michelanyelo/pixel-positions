@@ -15,41 +15,41 @@
 </head>
 
 <body class="bg-[#060606] text-white font-grotesk pb-20">
-    <div class="px-10">
-        <nav class="flex justify-between items-center p-4 border-b border-white/10">
+<div class="px-10">
+    <nav class="flex justify-between items-center p-4 border-b border-white/10">
+        <div>
+            <a href="/">
+                <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo">
+            </a>
+        </div>
+        <div class="space-x-6 font-bold">
+            <a href="">Trabajos</a>
+            <a href="">Carreras</a>
+            <a href="">Salarios</a>
+            <a href="">Empresas</a>
+        </div>
+
+        @auth
             <div>
-                <a href="/">
-                    <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo">
+                <a href="/jobs/create">Publica un trabajo</a>
+            </div>
+        @endauth
+
+        @guest
+            <div class="space-x-6 font-bold text-sm">
+                <a href="/login">Iniciar sesión</a>
+                <a href="/register"
+                   class="p-2 border border-white rounded-md hover:bg-white hover:text-black transition duration-300">
+                    Registrarse
                 </a>
             </div>
-            <div class="space-x-6 font-bold">
-                <a href="">Trabajos</a>
-                <a href="">Carreras</a>
-                <a href="">Salarios</a>
-                <a href="">Empresas</a>
-            </div>
+        @endguest
+    </nav>
 
-            @auth
-                <div>
-                    <a href="/jobs/create">Publica un trabajo</a>
-                </div>
-            @endauth
-
-            @guest
-                <div class="space-x-6 font-bold text-sm">
-                    <a href="/login">Iniciar sesión</a>
-                    <a href="/register"
-                        class="p-2 border border-white rounded-md hover:bg-white hover:text-black transition duration-300">
-                        Registrarse
-                    </a>
-                </div>
-            @endguest
-        </nav>
-
-        <main class="mt-10 max-w-[986px] mx-auto">
-            {{ $slot }}
-        </main>
-    </div>
+    <main class="mt-10 max-w-[986px] mx-auto">
+        {{ $slot }}
+    </main>
+</div>
 </body>
 
 </html>
