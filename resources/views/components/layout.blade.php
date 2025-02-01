@@ -16,40 +16,69 @@
 
 <body class="bg-[#060606] text-white font-grotesk pb-20">
 <div class="px-10">
-    <nav class="flex justify-between items-center p-4 border-b border-white/10">
+    <nav class="flex justify-between items-center p-4 border-b border-white/10 relative">
+        <!-- Logo -->
         <div>
             <a href="/">
-                <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo">
+                <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="logo" class="h-10">
             </a>
         </div>
-        <div class="space-x-6 font-bold">
+
+        <!-- Menú en pantallas grandes -->
+        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6 font-bold">
             <a href="">Trabajos</a>
             <a href="">Carreras</a>
             <a href="">Salarios</a>
             <a href="">Empresas</a>
         </div>
 
-        @auth
-            <div>
-                <a href="/jobs/create">Publica un trabajo</a>
-            </div>
-        @endauth
+        <!-- Botón Hamburguesa en móviles -->
+        <button id="menu-btn" class="md:hidden text-white">
+            ☰
+        </button>
 
-        @guest
-            <div class="space-x-6 font-bold text-sm">
+        <!-- Menú desplegable en móviles -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#060606] p-4 space-y-4 md:hidden">
+            <a href="" class="block">Trabajos</a>
+            <a href="" class="block">Carreras</a>
+            <a href="" class="block">Salarios</a>
+            <a href="" class="block">Empresas</a>
+        </div>
+
+        <!-- Elementos de autenticación -->
+        <div class="hidden md:flex space-x-6 font-bold text-sm items-center">
+            <a href="/jobs/create">Publica un trabajo</a>
+            @auth
+                <form action="/logout" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button
+                        class="p-2 border border-white rounded-md hover:bg-white hover:text-black transition duration-300">
+                        Cerrar sesión
+                    </button>
+                </form>
+            @endauth
+            @guest
                 <a href="/login">Iniciar sesión</a>
                 <a href="/register"
                    class="p-2 border border-white rounded-md hover:bg-white hover:text-black transition duration-300">
                     Registrarse
                 </a>
-            </div>
-        @endguest
+            @endguest
+        </div>
     </nav>
 
     <main class="mt-10 max-w-[986px] mx-auto">
         {{ $slot }}
     </main>
 </div>
-</body>
 
+<!-- Script para el menú hamburguesa -->
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function () {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
 </html>
+
