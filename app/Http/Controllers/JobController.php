@@ -18,7 +18,7 @@ class JobController extends Controller
     public function index()
     {
         return view('jobs.index', [
-            'jobs' => Job::with('tags')->orderBy('created_at', 'desc')->paginate(10),
+            'jobs' => Job::with(['employer', 'tags'])->orderBy('created_at', 'desc')->paginate(10),
             'featuredJobs' => Job::with('tags')->where('featured', 1)->orderBy('created_at', 'desc')->get(),
             'tags' => Tag::all(),
         ]);
